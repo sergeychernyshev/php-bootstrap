@@ -46,9 +46,9 @@ $_PROJECT array
 ---------------
 In your code, you can use special `$_PROJECT` array values in your code
 
-- ```php $_PROJECT['ROOT_FILESYSTEM_PATH']``` - Path on the file system where the project code is extracted to
-- ```php $_PROJECT['ROOT_ABSOLUTE_URL_PATH']``` - absolute URL path that corresponds to the root of the project
-- ```php $_PROJECT['ROOT_FULL_URL']``` - full URL that corresponds to the root of the projecd (used in emails or social media sharing)
+- `$_PROJECT['ROOT_FILESYSTEM_PATH']` - Path on the file system where the project code is extracted to
+- `$_PROJECT['ROOT_ABSOLUTE_URL_PATH']` - absolute URL path that corresponds to the root of the project
+- `$_PROJECT['ROOT_FULL_URL']` - full URL that corresponds to the root of the projecd (used in emails or social media sharing)
 
 All values have no trailing `/` symbol, you must append it in code.
 This is useful as it makes all strings start with `/` that corresponds to the root of your application file structure, e.g. `/config.php` or `/image/logo.png`
