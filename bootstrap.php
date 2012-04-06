@@ -14,6 +14,11 @@ $_PROJECT = function() {
 	*/
 	$_PROJECT['ROOT_FILESYSTEM_PATH'] = dirname(__FILE__);
 
+	// if this project was checked out in project subfolder (e.g. git submodule), climb up one more folder
+	if (basename($_PROJECT['ROOT_FILESYSTEM_PATH']) == 'php-bootstrap') {
+		$_PROJECT['ROOT_FILESYSTEM_PATH'] = dirname($_PROJECT['ROOT_FILESYSTEM_PATH']);
+	}
+
 	/*
 	 * $_PROJECT['ABSOLUTE_URL_PATH']
 	 *
