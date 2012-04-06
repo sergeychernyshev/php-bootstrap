@@ -10,6 +10,8 @@ Project setups
 - files simply unpacked in the folder under document root of the site like `/path/to/document/root/my_project/`
 - Apache Alias directove is used to map `/my_project/` to a folder outside of document root, e.g. `/path/to/my_project/`
 - sympling is created under document root pointing at foles outside of document root, e.g. `/path/to/document/root/my_project/` -> `/path/to/my_project/`
+- serving site through SSL
+- 
 
 Project code
 ------------
@@ -28,11 +30,15 @@ Usage
 
 Copy bootstrap.php to the root folder of your project and load it at top of your code
 
-	<?php require_once(dirname(__FILE__).'/bootstrap.php'); ?>
+```php
+<?php require_once(dirname(__FILE__).'/bootstrap.php'); ?>
+```
 
 in subfolders, climb up the directory like so:
 
-	<?php require_once(dirname(dirname(__FILE__)).'/bootstrap.php'); ?>
+```php
+<?php require_once(dirname(dirname(__FILE__)).'/bootstrap.php'); ?>
+```
 
 and so on.
 
@@ -43,6 +49,27 @@ In your code, you can use special `$_PROJECT` array values in your code
 - `$_PROJECT['ROOT_FILESYSTEM_PATH']` - Path on the file system where the project code is extracted to
 - `$_PROJECT['ROOT_ABSOLUTE_URL_PATH']` - absolute URL path that corresponds to the root of the project
 - `$_PROJECT['ROOT_FULL_URL']` - full URL that corresponds to the root of the projecd (used in emails or social media sharing)
+
+All values have no trailing `/` symbol, you must append it in code.
+This is useful as it makes all strings start with `/` that corresponds to the root of your application file structure, e.g. `/config.php` or `/image/logo.png`
+
+Example
+-------
+```php
+<?php require_once(dirname(dirname(__FILE__)).'/bootstrap.php');
+
+if (!file_exists($_PROJECT['ROOT_FILESYSTEM_PATH'] . '/config.php')) { ?>
+
+	<html><body>
+	<h1>Can't find config.php</h1>
+	<a href="<?php echo $_PROJECT['ROOT_ABSOLUTE_URL_PATH'] ?>/install.php">Run the installation</a>
+	</body></html>
+
+	<?php exit;
+}
+
+...
+```
 
 In other projects
 =================
