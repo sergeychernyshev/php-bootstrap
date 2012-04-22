@@ -45,7 +45,7 @@ $_PROJECT = function() {
 	$_PROJECT['ROOT_FULL_URL'] =
 		'http'.($https ? 's' : '') . 
 		'://' .
-		$_SERVER['HTTP_HOST'] .
+		$_SERVER['SERVER_NAME'] .
 		($_SERVER['SERVER_PORT'] != $default_port ? ':'.$_SERVER['SERVER_PORT'] : '') .
 		$_PROJECT['ROOT_ABSOLUTE_URL_PATH'];
 
