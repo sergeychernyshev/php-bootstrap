@@ -9,9 +9,8 @@ Project setups
 --------------
 - files simply unpacked in the folder under document root of the site like `/path/to/document/root/my_project/`
 - Apache Alias directove is used to map `/my_project/` to a folder outside of document root, e.g. `/path/to/my_project/`
-- sympling is created under document root pointing at foles outside of document root, e.g. `/path/to/document/root/my_project/` -> `/path/to/my_project/`
+- symlink is created under document root pointing at files outside of document root, e.g. `/path/to/document/root/my_project/` -> `/path/to/my_project/`
 - serving site through SSL
-- 
 
 Project code
 ------------
