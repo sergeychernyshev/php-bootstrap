@@ -27,5 +27,8 @@ if (array_key_exists($var, $_SERVER)) {
 <?php } ?>
 </table>
 
-<h2>More server information</h2>
-<?php phpinfo();
+<?php if (defined("SHOW_PHP_INFO")) { ?>
+	<h2>More server information</h2>
+	<?php
+	phpinfo();
+}
