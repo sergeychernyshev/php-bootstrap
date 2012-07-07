@@ -2,28 +2,6 @@ This is a simple library to be used in PHP projects to help managing the setup.
 
 Currently it helps with determining the root paths and URLs for the project and tries to handle different web site setups abstracting the differences from the user.
 
-Compatibility
-=============
-
-Project setups
---------------
-- files simply unpacked in the folder under document root of the site like `/path/to/document/root/my_project/`
-- Apache Alias directove is used to map `/my_project/` to a folder outside of document root, e.g. `/path/to/my_project/`
-- symlink is created under document root pointing at files outside of document root, e.g. `/path/to/document/root/my_project/` -> `/path/to/my_project/`
-- serving site through SSL
-
-Project code
-------------
-- project uses regular PHP files in URLs, e.g. `http://example.org/my_project/index.php?type=article&name=slug`
-- project maps multiple URLs to the same PHP file through PATH_INFO, e.g. `http://example.org/my_project/index.php/article/slug.html`
-- project maps multiple URLs to the same PHP file using mod_rewrite, e.g. `http://example.org/my_project/article/slug.html` -> `http://example.org/my_project/index.php`
-
-Use it at your own risk and allow users to override the default values in case their specific setup is even more weird and can't be auto-detected
-
-TODO
-----
-Automated testing and instructions/scripts/files to set up each of the tested environments.
-
 Usage
 =====
 
@@ -69,11 +47,32 @@ if (!file_exists($_PROJECT['ROOT_FILESYSTEM_PATH'] . '/config.php')) { ?>
 
 ...
 ```
+Compatibility
+=============
+
+Project setups
+--------------
+- files simply unpacked in the folder under document root of the site like `/path/to/document/root/my_project/`
+- Apache Alias directove is used to map `/my_project/` to a folder outside of document root, e.g. `/path/to/my_project/`
+- symlink is created under document root pointing at files outside of document root, e.g. `/path/to/document/root/my_project/` -> `/path/to/my_project/`
+- serving site through SSL
+
+Project code
+------------
+- project uses regular PHP files in URLs, e.g. `http://example.org/my_project/index.php?type=article&name=slug`
+- project maps multiple URLs to the same PHP file through PATH_INFO, e.g. `http://example.org/my_project/index.php/article/slug.html`
+- project maps multiple URLs to the same PHP file using mod_rewrite, e.g. `http://example.org/my_project/article/slug.html` -> `http://example.org/my_project/index.php`
+
+Use it at your own risk and allow users to override the default values in case their specific setup is even more weird and can't be auto-detected
 
 Testing
--------
+=======
 You can see results of every setup on the testing harness site:
 http://php-bootstrap.sergeychernyshev.com/
+
+TODO
+----
+- Automated testing and instructions/scripts/files to set up each of the tested environments.
 
 In other projects
 =================
