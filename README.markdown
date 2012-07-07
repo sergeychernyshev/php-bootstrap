@@ -67,8 +67,10 @@ Use it at your own risk and allow users to override the default values in case t
 
 Testing
 =======
-You can see results of every setup on the testing harness site:
+You can see results of supported setups on the testing harness site:
 http://php-bootstrap.sergeychernyshev.com/
+
+You can set up your testing environment using [Test Harness Project](https://github.com/sergeychernyshev/php-bootstrap-test)
 
 TODO
 ----
