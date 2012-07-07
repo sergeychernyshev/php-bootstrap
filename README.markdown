@@ -70,6 +70,11 @@ if (!file_exists($_PROJECT['ROOT_FILESYSTEM_PATH'] . '/config.php')) { ?>
 ...
 ```
 
+Testing
+-------
+You can see results of every setup on the testing harness site:
+http://php-bootstrap.sergeychernyshev.com/
+
 In other projects
 =================
 About every framework out there uses it's own bootstrapping process that usually heavily baked into how that framework works.
