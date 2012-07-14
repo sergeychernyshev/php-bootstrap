@@ -42,11 +42,27 @@ $_PROJECT = function() {
 		$default_port = 443;
 	}
 
+	$hostname = null;
+
+	// hostname fallback for CLI execution
+	if (array_key_exists('SERVER_NAME', $_SERVER)) {
+		$hostname = $_SERVER['SERVER_NAME'];
+	} else {
+		$hostname = php_uname('n');
+	}
+
+	// port fallback for CLI execution
+	if (array_key_exists('SERVER_PORT', $_SERVER)) {
+		$port = $_SERVER['SERVER_PORT'];
+	} else {
+		$port = $default_port;
+	}
+
 	$_PROJECT['ROOT_FULL_URL'] =
 		'http'.($https ? 's' : '') . 
 		'://' .
-		$_SERVER['SERVER_NAME'] .
-		($_SERVER['SERVER_PORT'] != $default_port ? ':'.$_SERVER['SERVER_PORT'] : '') .
+		$hostname .
+		($port != $default_port ? ":$port" : '') .
 		$_PROJECT['ROOT_ABSOLUTE_URL_PATH'];
 
 	return $_PROJECT;
