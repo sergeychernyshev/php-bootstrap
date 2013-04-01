@@ -1,7 +1,7 @@
 <?php
-namespace SergeyChernyshev\PHPBootstrap;
+namespace PHPBootstrap;
 
-if (!function_exists('SergeyChernyshev\PHPBootstrap\bootstrap')) {
+if (!function_exists('PHPBootstrap\bootstrap')) {
 	/**
 	 * Array of project settings
 	 */
@@ -116,5 +116,6 @@ if (!function_exists('SergeyChernyshev\PHPBootstrap\bootstrap')) {
 		return $_PROJECT;
 	};
 
+	// deprecated, used for backwards compatibility
 	$_PROJECT = bootstrap();
 }
