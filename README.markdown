@@ -95,6 +95,6 @@ Contributing
 ============
 This project is based on experience writing PHP apps, you can contribute by:
 
-- testing the code in different setups and reporting [issues](https://github.com/sergeychernyshev/php-bootstrap/)
+- testing the code in different setups and reporting [issues](https://github.com/sergeychernyshev/php-bootstrap/issues)
 - fixing bugs and sending pull request on Github
 - editing this file, including links to other project's code or just adding documentation
