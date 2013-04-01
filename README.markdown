@@ -8,24 +8,44 @@ Usage
 Copy bootstrap.php to the root folder of your project and load it at top of your code
 
 ```php
-<?php require_once(dirname(__FILE__).'/bootstrap.php'); ?>
+<?php require_once(__DIR__ . '/bootstrap.php'); ?>
 ```
 
 in subfolders, climb up the directory like so:
 
 ```php
-<?php require_once(dirname(dirname(__FILE__)).'/bootstrap.php'); ?>
+<?php require_once(dirname(__DIR__) . '/bootstrap.php'); ?>
 ```
 
-and so on.
+Using as submodule
+==================
+You can also have the whole project in `php-bootstrap` folder (useful when using git submodule): 
 
-$_PROJECT array
+```php
+<?php require_once(__DIR__ . '/php-bootstrap/bootstrap.php'); ?>
+```
+
+just make sure the folder is actually called `php-bootstrap` - we rely on this when determining project root (to climb up one level). 
+
+Getting the values
+==================
+You can simply retrieve environment settings array by calling `bootstrap()` function and passing in path to the file in the root of your project.
+
+If you're getting the environment in a file that is in the root already, you can just use `__FILE__` magic PHP constant like so.
+
+```php
+$project_env = SergeyChernyshev\PHPBootstrap\bootstrap(__FILE__);
+```
+
+It is useful to get environment in one global file in your project and usually a good idea to put it in the root of the project, this way the rest of the files will only need to include this one file.
+
+Environment settings array
 ---------------
-In your code, you can use special `$_PROJECT` array values in your code
+Once you get the environment settings array, you can use values inside:
 
-- `$_PROJECT['ROOT_FILESYSTEM_PATH']` - Path on the file system where the project code is extracted to
-- `$_PROJECT['ROOT_ABSOLUTE_URL_PATH']` - absolute URL path that corresponds to the root of the project
-- `$_PROJECT['ROOT_FULL_URL']` - full URL that corresponds to the root of the projecd (used in emails or social media sharing)
+- `$project_env['ROOT_FILESYSTEM_PATH']` - Path on the file system where the project code is extracted to
+- `$project_env['ROOT_ABSOLUTE_URL_PATH']` - absolute URL path that corresponds to the root of the project
+- `$project_env['ROOT_FULL_URL']` - full URL that corresponds to the root of the projecd (used in emails or social media sharing)
 
 All values have no trailing `/` symbol, you must append it in code.
 This is useful as it makes all strings start with `/` that corresponds to the root of your application file structure, e.g. `/config.php` or `/image/logo.png`
@@ -33,13 +53,14 @@ This is useful as it makes all strings start with `/` that corresponds to the ro
 Example
 -------
 ```php
-<?php require_once(dirname(dirname(__FILE__)).'/bootstrap.php');
+<?php require_once(__DIR__ . '/bootstrap.php');
+$project_env = SergeyChernyshev\PHPBootstrap\bootstrap(__FILE__);
 
-if (!file_exists($_PROJECT['ROOT_FILESYSTEM_PATH'] . '/config.php')) { ?>
+if (!file_exists($project_env['ROOT_FILESYSTEM_PATH'] . '/config.php')) { ?>
 
 	<html><body>
 	<h1>Can't find config.php</h1>
-	<a href="<?php echo $_PROJECT['ROOT_ABSOLUTE_URL_PATH'] ?>/install.php">Run the installation</a>
+	<a href="<?php echo $project_env['ROOT_ABSOLUTE_URL_PATH'] ?>/install.php">Run the installation</a>
 	</body></html>
 
 	<?php exit;
@@ -55,6 +76,7 @@ Project setups
 - files simply unpacked in the folder under document root of the site like `/path/to/document/root/my_project/`
 - Apache Alias directove is used to map `/my_project/` to a folder outside of document root, e.g. `/path/to/my_project/`
 - symlink is created under document root pointing at files outside of document root, e.g. `/path/to/document/root/my_project/` -> `/path/to/my_project/`
+- serving site on non-default port number (not 80)
 - serving site through SSL
 
 Project code
