@@ -1,40 +1,25 @@
-This is a simple library to be used in PHP projects to help managing the setup.
+This is a simple library to be used in PHP projects to help managing the setup, it helps with determining the root paths and URLs for the project and tries to handle different web site setups abstracting the differences from developers.
 
-Currently it helps with determining the root paths and URLs for the project and tries to handle different web site setups abstracting the differences from the user.
+Prerequisites
+=============
+The only pre-requisite for the project is PHP version 5.3 or newer.
 
 Usage
 =====
-
-Copy bootstrap.php to the root folder of your project and load it at top of your code
-
-```php
-<?php require_once(__DIR__ . '/bootstrap.php'); ?>
-```
-
-in subfolders, climb up the directory like so:
-
-```php
-<?php require_once(dirname(__DIR__) . '/bootstrap.php'); ?>
-```
-
-Using as submodule
-==================
-You can also have the whole project in `php-bootstrap` folder (useful when using git submodule): 
+Copy project folder into root of your project and load it at the top of your code
 
 ```php
 <?php require_once(__DIR__ . '/php-bootstrap/bootstrap.php'); ?>
 ```
 
-just make sure the folder is actually called `php-bootstrap` - we rely on this when determining project root (to climb up one level). 
-
 Getting the values
 ==================
-You can simply retrieve environment settings array by calling `bootstrap()` function and passing in path to the file in the root of your project.
+You can simply retrieve environment settings array by calling `bootstrap()` function and passing in path to any file in the **root of your project**.
 
-If you're getting the environment in a file that is in the root already, you can just use `__FILE__` magic PHP constant like so.
+If you're retrieving the environment in a file that is in the root already, you can just use `__FILE__` magic PHP constant like so:
 
 ```php
-$project_env = SergeyChernyshev\PHPBootstrap\bootstrap(__FILE__);
+$project_env = PHPBootstrap\bootstrap(__FILE__);
 ```
 
 It is useful to get environment in one global file in your project and usually a good idea to put it in the root of the project, this way the rest of the files will only need to include this one file.
@@ -54,7 +39,7 @@ Example
 -------
 ```php
 <?php require_once(__DIR__ . '/bootstrap.php');
-$project_env = SergeyChernyshev\PHPBootstrap\bootstrap(__FILE__);
+$project_env = PHPBootstrap\bootstrap(__FILE__);
 
 if (!file_exists($project_env['ROOT_FILESYSTEM_PATH'] . '/config.php')) { ?>
 
