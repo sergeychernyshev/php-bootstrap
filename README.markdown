@@ -79,10 +79,6 @@ http://php-bootstrap.sergeychernyshev.com/
 
 You can set up your testing environment using [Test Harness Project](https://github.com/sergeychernyshev/php-bootstrap-test)
 
-TODO
-----
-- Automated testing and instructions/scripts/files to set up each of the tested environments.
-
 In other projects
 =================
 About every framework out there uses it's own bootstrapping process that usually heavily baked into how that framework works.
