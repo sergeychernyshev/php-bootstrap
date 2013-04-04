@@ -32,10 +32,10 @@ if (!function_exists('PHPBootstrap\bootstrap')) {
 		$script_filename_realpath = realpath($_SERVER['SCRIPT_FILENAME']);
 		$script_filename_folder = dirname($script_filename_realpath);
 
+
 		// determining if ROOT is above the script that is loaded
 		if (strpos($script_filename_realpath, $_PROJECT['ROOT_FILESYSTEM_PATH']) !== FALSE) {
 			// root is above the script
-
 			# Determining a path to a currently requested file from the root of the project and removing it
 			# using realpath to work around the issue with SCRIPT_FILENAME not traversing symlinks
 			$file_path_from_root = substr(
@@ -46,7 +46,7 @@ if (!function_exists('PHPBootstrap\bootstrap')) {
 			$_PROJECT['ROOT_ABSOLUTE_URL_PATH'] = substr($_SERVER['SCRIPT_NAME'], 0, -strlen($file_path_from_root));
 		} else if (strpos($_PROJECT['ROOT_FILESYSTEM_PATH'], $script_filename_folder) !== FALSE) {
 			// root is below the script
-			$_PROJECT['ROOT_ABSOLUTE_URL_PATH'] = dirname($_SERVER['SCRIPT_NAME']) . substr(
+			$_PROJECT['ROOT_ABSOLUTE_URL_PATH'] = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/') . substr(
 				$_PROJECT['ROOT_FILESYSTEM_PATH'],
 				strlen($script_filename_folder)
 			);
