@@ -99,6 +99,12 @@ if (!function_exists('PHPBootstrap\bootstrap')) {
 			$hostname = php_uname('n');
 		}
 
+		// some systems will have port as part of server name
+		$hostname_has_port = strpos($hostname, ':');
+		if ($hostname_has_port > 0) {
+			$hostname = substr($hostname, 0, $hostname_has_port);
+		}
+
 		// port fallback for CLI execution
 		if (array_key_exists('SERVER_PORT', $_SERVER)) {
 			$port = $_SERVER['SERVER_PORT'];
