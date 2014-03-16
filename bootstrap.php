@@ -85,7 +85,7 @@ if (!function_exists('PHPBootstrap\bootstrap')) {
 		*/
 		$https = false;
 		$default_port = 80;
-		if (array_key_exists('HTTPS', $_SERVER)) {
+		if (array_key_exists('HTTPS', $_SERVER) and $_SERVER['HTTPS'] and $_SERVER['HTTPS'] != 'off') {
 			$https = true;
 			$default_port = 443;
 		}
