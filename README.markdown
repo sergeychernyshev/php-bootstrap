@@ -85,7 +85,7 @@ About every framework out there uses it's own bootstrapping process that usually
 
 Here's a list of links to their code:
 
-- Zend Framework - `setBaseUrl()` in [`Zend/Controller/Request/Http.php`](https://github.com/zendframework/zf2/blob/d8adfe90da23af119ae5732195ad50af0009d672/library/Zend/Http/PhpEnvironment/Request.php#L488)
+- Zend Framework - `setBaseUrl()` in [`Zend/Controller/Request/Http.php`](https://github.com/zendframework/zf2/blob/d8adfe90da23af119ae5732195ad50af0009d672/library/Zend/Http/PhpEnvironment/Request.php#L147)
 
 Contributing
 ============
