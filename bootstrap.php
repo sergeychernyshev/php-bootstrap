@@ -6,8 +6,6 @@ if (!function_exists('PHPBootstrap\bootstrap')) {
 	 * Array of project settings
 	 */
 	function bootstrap($file_in_root_folder = null) {
-		global $_SERVER;
-
 		$_PROJECT = array();
 
 		$file = is_null($file_in_root_folder) ? __FILE__ : $file_in_root_folder;
