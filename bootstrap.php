@@ -57,14 +57,14 @@ if (!function_exists('PHPBootstrap\bootstrap')) {
 			while (strpos($_PROJECT['ROOT_FILESYSTEM_PATH'], $common_parent) === FALSE) {
 				$new_common_parent = dirname($common_parent);
 				if ($common_parent == $new_common_parent) {
-					die("Got up to root of the filesystem");
+					throw new Exception("Got up to root of the filesystem");
 				}
 				$common_parent = $new_common_parent;
 
 				$i++;
 				// Hope 50 folders is not too much
 				if ($i > 50) {
-					die("To many iterations: $i");
+					throw new Exception("To many iterations: $i");
 				}
 			}
 
