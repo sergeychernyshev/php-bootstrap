@@ -1,3 +1,5 @@
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/3cd453bb-dd2b-4c59-9310-76b3dd8d778a/mini.png)](https://insight.sensiolabs.com/projects/3cd453bb-dd2b-4c59-9310-76b3dd8d778a)
+
 This is a simple library to be used in PHP projects to help managing the setup, it helps with determining the root paths and URLs for the project and tries to handle different web site setups abstracting the differences from developers.
 
 Prerequisites
